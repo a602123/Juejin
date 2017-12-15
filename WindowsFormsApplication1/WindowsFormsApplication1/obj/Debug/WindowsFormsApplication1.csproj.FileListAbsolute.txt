@@ -1,0 +1,23 @@
+c:\users\xfy\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\XFY\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\XFY\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\XFY\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\XFY\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\XFY\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\XFY\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\XFY\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\XFY\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\众泰掘金自动化处理.exe.config
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\众泰掘金自动化处理.exe.manifest
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\众泰掘金自动化处理.application
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\众泰掘金自动化处理.exe
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\众泰掘金自动化处理.pdb
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.CoreCompileInputs.cache
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\众泰掘金自动化处理.exe.manifest
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\众泰掘金自动化处理.application
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\众泰掘金自动化处理.exe
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\众泰掘金自动化处理.pdb
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Music.resources

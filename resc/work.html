@@ -1,0 +1,1032 @@
+<html>
+
+	<head>
+		<title>销售线索信息维护</title>
+		<link rel="stylesheet" type="text/css" href="/CSS/style.css">
+		<script type="text/javascript" src="/JS/page.js"></script>		
+		<script type="text/javascript" src="/JS/jquery.cookie.js"></script>		
+	</head>
+    <script type="text/javascript">
+    
+		function exportSaleClue() {
+			/* var startDate = document.getElementById("startDate").value;
+			var endDate = document.getElementById("endDate").value; */
+			var status = document.getElementById("status").value;
+			/* var publicType=document.getElementById("publicType").value;  (publicType.length >0)|| 、类别 */
+			var clueType = document.getElementById("clueType").value;
+			var startDate = document.getElementById("startSaleClueDate").value;
+			var endDate = document.getElementById("endSaleClueDate").value;			
+			
+			if((startDate.length > 0 && endDate.length > 0) || (status.length > 0) ||
+				(clueType.length > 0)) {
+				pagingFormSubmit('/saleClue_exportSaleClue.action');
+			} else {
+				MessageHelper.info({
+					msg: "导出excel时线索类型和状态及最后推送开始日期、最后推送日期不能全部为空，请先选择"
+				});
+				return;
+			}
+        }
+        
+	</script>
+
+	<body>
+		<input type="hidden" name="root" id="root" value="" />
+		<form name="pagingForm" method="post">
+			<table width=<table"1200" border="0" cellspacing="0" cellpadding="0" align="center">
+				<tr>
+					<td valign="top">
+						<br>
+						<table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" class="tableBorder_gray">
+							<tr>
+								<td valign="top" style="padding:5px;">
+									<table width="100%" border="0" cellpadding="0" cellspacing="0">
+										<tr>
+											<td valign="top">
+												<table width="98%" border="0" cellspacing="15" cellpadding="15">
+													<tr>
+														<td width="80">销售顾问</td>
+														<td>
+															<select name="saleConsultantId" id="saleConsultantId" style="width: 120px;" />
+															<option value="">-----请选择-----</option>
+															
+																<option value="-1" >
+																	未分配公共线索
+																</option>
+															
+																<option value="1172" >
+																	刘庆生
+																</option>
+															
+																<option value="2623" >
+																	马苏
+																</option>
+															
+																<option value="2624" >
+																	彭乔
+																</option>
+															
+																<option value="2611" >
+																	潘煜磊
+																</option>
+															
+																<option value="2616" >
+																	孙赛
+																</option>
+															
+																<option value="1122" >
+																	冯魁
+																</option>
+															
+																<option value="8315" >
+																	侯文娟
+																</option>
+															
+																<option value="13203" >
+																	黄磊
+																</option>
+															
+																<option value="10857" >
+																	樊海涛
+																</option>
+															
+																<option value="11097" >
+																	赵腾龙
+																</option>
+															
+																<option value="29680" >
+																	刘世杰
+																</option>
+															
+																<option value="2610" >
+																	杜少峰
+																</option>
+															
+																<option value="31087" >
+																	巴兆光
+																</option>
+															
+																<option value="24541" >
+																	吕毛毛
+																</option>
+															
+																<option value="30601" >
+																	赵晓
+																</option>
+															
+																<option value="35621" >
+																	刘梦瑶
+																</option>
+															
+																<option value="39701" >
+																	胡晓
+																</option>
+															
+																<option value="37323" >
+																	侯光辉
+																</option>
+															
+																<option value="41061" >
+																	王珂
+																</option>
+															
+																<option value="35622" >
+																	付瑞祥
+																</option>
+															
+																<option value="40784" >
+																	李创业
+																</option>
+															
+															</select>
+														</td>
+														<td width="80">客户姓名</td>
+														<td>
+															<input name="name" id="name" value="" type="text" style="width: 120px;" />
+														</td>
+														<td width="80">客户联系方式</td>
+														<td>
+															<input name="phoneNum" id="phoneNum" value="" type="text" style="width: 120px;" />
+														</td>
+													</tr>
+													<tr>
+														<td width="80">意向车型</td>
+														<td>
+															<select name="carTypeId" id="carTypeId" style="width: 120px;" />
+															<option value="">-----请选择-----</option>
+															
+																<option value="861dfa4e-8560-47f6-884a-cc635f542bc3" >
+																	Z700 1.8T-MT豪华型
+																</option>
+															
+																<option value="058dc32a-d448-4c29-bbb2-7149920870e6" >
+																	Z3601.5L-MT国V豪华型
+																</option>
+															
+																<option value="ddc527af-1cdb-4b98-ae14-1ca60dc6f645" >
+																	Z700 1.8T-DCT典雅型
+																</option>
+															
+																<option value="2d8c9f91-1ed9-4adb-b304-bb0ee7bed963" >
+																	Z700 1.8T-DCT公务版
+																</option>
+															
+																<option value="7cf02a38-ef2d-4ef5-9550-782805b48e0b" >
+																	Z700 1.8T-DCT尊贵型
+																</option>
+															
+																<option value="24aa173c-2b99-4308-abc1-b0706f65fd72" >
+																	Z700 1.8T-MT典雅型
+																</option>
+															
+																<option value="4daf0ae7-cea6-4149-8c7c-277684f0eaf2" >
+																	Z700 1.8T-DCT豪华型
+																</option>
+															
+																<option value="5458ef07-4791-4bfa-9d62-1237ee761dba" >
+																	T6001.5T-MT精英型(天窗)
+																</option>
+															
+																<option value="848cc492-d644-4b7d-8035-d900f832c67f" >
+																	Z3001.5L-MT新视界版豪华型
+																</option>
+															
+																<option value="471596ff-c919-4817-af7d-422f72aeb458" >
+																	T6001.5T-MT国Ⅴ尊贵型运动版
+																</option>
+															
+																<option value="ee267f2a-a46d-4fb5-9f23-d1f8f02386e9" >
+																	T6002.0T-DCT国Ⅴ尊贵型运动版
+																</option>
+															
+																<option value="7f26d66e-54f8-4934-9b04-45b0457acfb2" >
+																	T6002.0T-DCT国Ⅴ豪华型运动版
+																</option>
+															
+																<option value="892c0010-2713-4362-94e6-3ab4c30d032e" >
+																	T6001.5T-MT国Ⅴ豪华型运动版
+																</option>
+															
+																<option value="1c9074de-8964-4f46-af96-2e2871e1d6b3" >
+																	T6002.0T-DCT国Ⅴ尊贵型运动版
+																</option>
+															
+																<option value="602af6dc-dc6d-4511-8577-d410f823cdc1" >
+																	T6002.0T-DCT国Ⅴ尊享型运动版
+																</option>
+															
+																<option value="f7b71392-41e1-4cd3-8af0-175b0dc41f98" >
+																	T6001.5T-MT国Ⅴ尊享型运动版
+																</option>
+															
+																<option value="19d1f2bf-e3b3-4485-95b8-4a8a2f621bf9" >
+																	T7001.8T-DCT国V尊享型 (黑棕)
+																</option>
+															
+																<option value="e754f038-5c92-44c8-b0c5-59c674d35cbe" >
+																	T600Coupe1.5T-AT国V旗舰型
+																</option>
+															
+																<option value="b075fa81-fae6-46f1-97c9-90950c189a72" >
+																	T600Coupe1.5T-AT国V豪华型
+																</option>
+															
+																<option value="0a64116f-e1dc-4a56-926e-b736175a4807" >
+																	T600Coupe1.5T-MT国V尊享型
+																</option>
+															
+																<option value="f8296422-e284-4e84-b7f8-0f6abee125bf" >
+																	T3001.5L-MT国V豪华型
+																</option>
+															
+																<option value="65455508-cc16-4f6b-97c1-a4f7821441b9" >
+																	T7001.8T-DCT国V尊享型 (黑棕)
+																</option>
+															
+																<option value="a357e739-4269-4470-9bb7-cf9a81ac8498" >
+																	Z5601.5T-CVT国V豪华型(黑色内饰)
+																</option>
+															
+																<option value="8212fb62-47bf-4874-affa-e3151f03b0d2" >
+																	T3001.5T-CVT国V豪华型
+																</option>
+															
+																<option value="515cf1ab-2b8c-44b7-942d-37d50067789c" >
+																	T600Coupe1.5T-MT国V尊享型
+																</option>
+															
+																<option value="13194ea8-3737-4f66-8799-2b895f8437d6" >
+																	T600Coupe1.5T-MT国V豪华型
+																</option>
+															
+																<option value="7b834b3c-0a48-4c0a-8ed5-b80b818d2a85" >
+																	T600Coupe1.5T-AT国V尊贵型
+																</option>
+															
+																<option value="eedd95c6-cf54-4e17-bbce-219787f4a3f0" >
+																	T7001.8T-DCT国V尊贵型 (黑米)
+																</option>
+															
+																<option value="fdb939fa-1092-46f2-86f8-c0e466cb7ef4" >
+																	T600Coupe1.5T-AT国V豪华型
+																</option>
+															
+																<option value="818df71c-298a-4871-b431-50da8a7cc099" >
+																	T600Coupe1.5T-AT国V尊享型
+																</option>
+															
+																<option value="4419f092-f2cc-4c1f-992a-7510c0c6a3ff" >
+																	Z700 1.8T-MT尊贵型
+																</option>
+															
+															</select>
+														</td>
+														<td width="80">建档开始日期</td>
+														<td>
+															<input name="startDate" type="text" id="startDate" value="">
+														</td>
+														<td width="80">建档结束日期</td>
+														<td>
+															<input name="endDate" type="text" id="endDate" value="">
+														</td>
+														
+														
+													</tr>
+													<tr>
+														<td width="80">线索类型</td>
+														<td>
+															<select name="clueType" id="clueType" style="width: 120px;">
+																<option value="">-----请选择-----</option>
+																<option value="0" >手工</option>
+																<option value="1" >汽车之家</option>
+																<option value="2" >易车网</option>
+																<option value="3" >官网</option>
+																<option value="4" >呼叫中心</option>
+																<option value="5" >客服收集</option>
+															</select>
+														</td>
+														<td width="80">线索状态</td>
+														<td>
+															<select name="status" id="status" style="width: 120px;">
+																<option value="">-----请选择-----</option>
+																<option value="0" >未处理</option>
+																<option value="1" >已处理</option>
+																<option value="2" >战败</option>
+															</select>
+														</td>
+														<td width="80">渠道</td>
+														<td>
+															<select name="channelType" id="channelType" style="width: 120px;" />
+															<option value="">-----请选择-----</option>
+															
+																<option value="" >
+																	全部
+																</option>
+															
+																<option value="0" >
+																	主店
+																</option>
+															
+																<option value="1" >
+																	二网
+																</option>
+															
+																<option value="2" >
+																	网销
+																</option>
+															
+																<option value="3" >
+																	外拓
+																</option>
+															
+															</select>
+														</td>
+													</tr>
+													<tr>
+														<td width="80">最后推送开始日期</td>
+														<td>
+															<input name="startSaleClueDate" type="text" id="startSaleClueDate" value="2017-10-01">
+														</td>
+														<td width="80">最后推送结束日期</td>
+														<td>
+															<input name="endSaleClueDate" type="text" id="endSaleClueDate" value="">
+														</td>
+														<td width="150">每10分刷新页面<input type="checkbox" id='refWeb'/></td>
+													</tr>
+													<tr>
+														<td colspan="8" align="right">
+															<input name="queryParams" type="hidden" style="width:100px" id="queryParams" value="n" />
+															<input name="Submit" id="cx" type="button" value="查 询" onClick="showSaleClue()">
+															<input name="Submit" type="button" value="线索新增" onClick="location.href='/saleClue_toAdd.action';">
+															<input name="Submit" type="button" value="线索导出" onClick="exportSaleClue()">
+														<td/>
+													</tr>
+
+													<tr>
+														<td width="80" style="background:yellow">分配销售顾问</td>
+														<td>
+															<select name="saleConsultantIdTransfer" id="saleConsultantIdTransfer" style="width: 120px;background:yellow;" />
+															<option value="">-----请选择-----</option>
+															
+																
+																	<option value="1172" >
+																		刘庆生
+																	</option>
+																
+															
+																
+																	<option value="2623" >
+																		马苏
+																	</option>
+																
+															
+																
+																	<option value="2624" >
+																		彭乔
+																	</option>
+																
+															
+																
+																	<option value="2611" >
+																		潘煜磊
+																	</option>
+																
+															
+																
+																	<option value="2616" >
+																		孙赛
+																	</option>
+																
+															
+																
+																	<option value="1122" >
+																		冯魁
+																	</option>
+																
+															
+																
+																	<option value="8315" >
+																		侯文娟
+																	</option>
+																
+															
+																
+																	<option value="13203" >
+																		黄磊
+																	</option>
+																
+															
+																
+																	<option value="10857" >
+																		樊海涛
+																	</option>
+																
+															
+																
+																	<option value="11097" >
+																		赵腾龙
+																	</option>
+																
+															
+																
+																	<option value="29680" >
+																		刘世杰
+																	</option>
+																
+															
+																
+																	<option value="2610" >
+																		杜少峰
+																	</option>
+																
+															
+																
+																	<option value="31087" >
+																		巴兆光
+																	</option>
+																
+															
+																
+																	<option value="24541" >
+																		吕毛毛
+																	</option>
+																
+															
+																
+																	<option value="30601" >
+																		赵晓
+																	</option>
+																
+															
+																
+																	<option value="35621" >
+																		刘梦瑶
+																	</option>
+																
+															
+																
+																	<option value="39701" >
+																		胡晓
+																	</option>
+																
+															
+																
+																	<option value="37323" >
+																		侯光辉
+																	</option>
+																
+															
+																
+																	<option value="41061" >
+																		王珂
+																	</option>
+																
+															
+																
+																	<option value="35622" >
+																		付瑞祥
+																	</option>
+																
+															
+																
+																	<option value="40784" >
+																		李创业
+																	</option>
+																
+															
+															</select>
+															<input name="transfer" type="button" value="重新分配" onClick="transferClue()">
+														</td>
+													</tr>
+
+													
+														<tr>
+															<td>网销经理线索战败</td>
+															<td colspan="7">
+																原因
+																<select name="defeatReasonSelect" id="defeatReasonSelect" style="width: 60px;" />
+																<option value="无效">无效</option>
+																<option value="战败">战败</option>
+																<option value="其他">其他</option>
+																</select>
+																备注 <input name="defeatReason" id="defeatReason" value="" type="text" style="width: 300px;" />
+																<input name="defeat" type="button" value="确定战败" onClick="saleClueDefeat()">
+															</td>
+														</tr>
+													
+												</table>
+												<script type="text/javascript">
+													function showSaleClueDetailBySaleClue(clueId) {
+														window.open('/saleClueDetail_getQueryBySaleClueDetail.action?clueId=' + clueId, '重复线索明细', 'width=900,height=525,location=no,resizable=no,status=no,toolbar=no,scrollbars=yes,menubar=no,screenX=100,screenY=100');
+													}
+													var taskDateStart = new Ext.form.DateField({
+														applyTo: 'startDate',
+														width: 120,
+														format: 'Y-m-d'
+													});
+
+													var taskDateEnd = new Ext.form.DateField({
+														applyTo: 'endDate',
+														width: 120,
+														format: 'Y-m-d'
+													});
+													
+													var startSaleClueDate = new Ext.form.DateField({
+														applyTo: 'startSaleClueDate',
+														width: 120,
+														format: 'Y-m-d'
+													});
+
+													var endSaleClueDate = new Ext.form.DateField({
+														applyTo: 'endSaleClueDate',
+														width: 120,
+														format: 'Y-m-d'
+													});
+
+													function allChecked() {
+														if($("#idall").attr("checked")) {
+															$("input[type='checkbox'][id='urls']").attr("checked", true);
+														} else {
+															$("input[type='checkbox'][id='urls']").attr("checked", false);
+														}
+													}
+
+													function transferClue() {
+														var id = [];
+														$('input[id="urls"]:checked').each(function() {
+															id.push($(this).val());
+														});
+														if(id.length == 0) {
+															alert('你还没有选择需要分配的线索！');
+															return;
+														}
+														var saleConsultantIdTransfer = $("#saleConsultantIdTransfer").val();
+														if(saleConsultantIdTransfer == "") {
+															alert('请选择分配的销售顾问！');
+															return;
+														}
+														if(confirm('确定把' + id.length + '条线索分配给所选销售顾问?')) {
+															var a = eval("({'id':'" + id + "','saleConsultantId':'" + saleConsultantIdTransfer + "'})");
+															$.ajax({
+																url: 'saleClue_changeCluesaleConsultant.action',
+																type: 'post',
+																data: a,
+																dataType: 'json',
+																timeout: 180000,
+																success: function(json) {
+																	var message = json.message;
+																	if(json.successFlag) {
+																		$("#cx").click();
+																		//window.location.href='/saleClue_queryPagedList.action';
+																		alert(message);
+																	} else {
+																		alert(message);
+																	}
+
+																},
+																error: function() {
+																	alert(json.message);
+																}
+															});
+														} else {
+															return;
+														}
+													}
+
+													function saleClueDefeat() {
+														var id = [];
+														$('input[id="urls"]:checked').each(function() {
+															id.push($(this).val());
+														});
+														if(id.length == 0) {
+															alert('你还没有选择需要战败的线索！');
+															return;
+														}
+														var defeatReasonSelect = $("#defeatReasonSelect").val();
+														var defeatReason = $("#defeatReason").val();
+														if(defeatReason.length > 100) {
+															alert('备注不能超过100个字！');
+															return;
+														}
+														if(confirm('确定把' + id.length + '条线索战败?')) {
+															var a = eval("({'id':'" + id + "','defeatReasonSelect':'" + defeatReasonSelect + "','defeatReason':'" + defeatReason + "'})");
+															$.ajax({
+																url: 'saleClue_saleClueDefeat.action',
+																type: 'post',
+																data: a,
+																dataType: 'json',
+																timeout: 180000,
+																success: function(json) {
+																	var message = json.message;
+																	if(json.successFlag) {
+																		window.location.href = '/saleClue_queryPagedList.action';
+																		alert('线索战败成功');
+																	} else {
+																		alert(message);
+																	}
+
+																},
+																error: function() {
+																	alert(json.message);
+																}
+															});
+														} else {
+															return;
+														}
+													}
+													
+													function showSaleClue(){
+														pageTo('/saleClue_queryPagedList.action',1);
+													}
+													
+													$("#refWeb").change(function(){
+														var check = document.getElementById("refWeb").checked;
+														if(check == true){
+															$.cookie("check","true",{expires:7, path:'/'});
+														}else if(check == false){
+															$.cookie("check","false",{expires:7, path:'/'});
+														}
+														showSaleClue();
+													});
+													
+													$(document).ready(function(){
+														var check1 = $.cookie("check");
+														if(check1 == "true"){
+															$("#refWeb").attr("checked","checked");
+															setInterval(function() {
+																showSaleClue();
+															}, 600000)
+														}
+													});
+																									
+												</script>
+												
+													<table class="tbl_" cellpadding="0" cellspacing="0">
+														<tr class="header">
+															<td class="center" width="4%">
+																<input type="checkbox" id='idall' onclick="allChecked();"/> 序号
+															</td>
+															<td class="content" width="5%">初始来源</td>
+															<td class="content" width="5%">销售顾问</td>
+															<td class="content" width="5%">客户姓名</td>
+															<td class="content" width="5%">联系方式</td>
+															<td class="content" width="5%">性别</td>
+															<td class="content" width="5%">意向车型</td>
+															<td class="content" width="5%">状态</td>
+															<td class="content" width="6%">创建时间</td>
+															<td class="content" width="6%">处理时间</td>
+															<td class="content" width="6%">入公时间</td>
+															<td class="content" width="5%">提交审批时间</td>
+															<td class="content" width="6%">处理超时</td>
+															<td class="content" width="6%">入公超时</td>
+															<td class="content" width="5%">审批超时</td>
+															<td class="content" width="6%">最后推送时间</td>
+															<td class="content" width="5%">推送次数</td>
+															<td class="content" width="5%">备注</td>
+															<td class="content" width="5%">上次审核</td>
+															
+														</tr>
+														
+                                                            <tr align="center" onmousemove="trOnmousemove(this)" onmouseout="trOnmouseout(this)">
+                                                                <td class="content">
+                                                            
+                                                                    &nbsp; 1
+                                                                </td>
+                                                                <td class="content">易车网</td>
+                                                                <td class="content">马苏</td>
+                                                                <td class="content">
+                                                                    <a href="javascript:void(0)" onclick="showSaleClueDetailBySaleClue('acc2042c-72d7-41ec-8870-d2036b51afdb')">易车网400
+                                                            
+                                                                    </a>
+                                                                </td>
+                                                                <td class="content">15038161305</td>
+                                                                <td class="content"></td>
+                                                                <td class="content"></td>
+                                                                <td class="content">战败</td>
+                                                                <td class="content">2017-10-24 15:29:54.074</td>
+                                                                <td class="content">2017-10-24 15:53:46.906</td>
+                                                                <td class="content"></td>
+                                                                <td class="content">2017-10-24 15:53:46.906</td>
+                                                                <td class="content"></td>
+                                                                <td class="content">
+                                                            
+                                                                </td>
+                                                                <td class="content"></td>
+                                                                <td class="content">2017-10-24 15:29:54.074</td>
+                                                                <td class="content textHidden">1</td>
+                                                            
+                                                                <td class="content textHidden" title="河南郑州">河南郑州</td>
+                                                                <td class="content textHidden" title="【线索战败原因】:网销经理操作,无效!,网销经理操作,无效!!">【线索战败原因】:网销经理操作,无效!,网销经理操作,无效!!</td>
+                                                            </tr>
+														
+															<tr align="center" onmousemove="trOnmousemove(this)" onmouseout="trOnmouseout(this)">
+																<td class="content">
+																	
+																	&nbsp;
+																	2</td>
+																<td class="content">易车网</td>
+																<td class="content">侯文娟</td>
+																<td class="content">
+																	<a href="javascript:void(0)" onclick="showSaleClueDetailBySaleClue('34dc563c-f7f9-4d8a-95d5-f3025562bb49')">易车网400
+																		
+																	</a>
+																</td>
+																<td class="content">13113458844</td>
+																<td class="content"></td>
+																<td class="content"></td>
+																<td class="content">战败</td>
+																<td class="content">2017-10-24 09:20:16.441</td>
+																<td class="content">2017-10-24 09:22:33.763</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 09:22:33.763</td>
+																<td class="content"></td>
+																<td class="content">
+																	
+																</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 09:20:16.441</td>
+																<td class="content textHidden">1</td>
+																
+																<td class="content textHidden" title="河北邢台">河北邢台</td>
+																<td class="content textHidden" title="【线索战败原因】:网销经理操作,战败!,网销经理操作,战败!!">【线索战败原因】:网销经理操作,战败!,网销经理操作,战败!!</td>								
+															</tr>
+														
+															<tr align="center" onmousemove="trOnmousemove(this)" onmouseout="trOnmouseout(this)">
+																<td class="content">
+																	
+																	&nbsp;
+																	3</td>
+																<td class="content">易车网</td>
+																<td class="content">胡晓</td>
+																<td class="content">
+																	<a href="javascript:void(0)" onclick="showSaleClueDetailBySaleClue('4cff7270-e97a-4be5-bf43-02c7fc0d5504')">张先生
+																		
+																	</a>
+																</td>
+																<td class="content">15093112237</td>
+																<td class="content"></td>
+																<td class="content"></td>
+																<td class="content">战败</td>
+																<td class="content">2017-10-24 15:30:01.115</td>
+																<td class="content">2017-10-24 15:53:46.906</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 15:53:46.906</td>
+																<td class="content"></td>
+																<td class="content">
+																	
+																</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 15:30:01.115</td>
+																<td class="content textHidden">1</td>
+																
+																<td class="content textHidden" title="河南郑州众泰汽车 T700 1.8T 自动豪华型">河南郑州众泰汽车 T700 1.8T 自动豪华型</td>
+																<td class="content textHidden" title="【线索战败原因】:网销经理操作,无效!,网销经理操作,无效!!">【线索战败原因】:网销经理操作,无效!,网销经理操作,无效!!</td>								
+															</tr>
+														
+															<tr align="center" onmousemove="trOnmousemove(this)" onmouseout="trOnmouseout(this)">
+																<td class="content">
+																	
+																	&nbsp;
+																	4</td>
+																<td class="content">汽车之家</td>
+																<td class="content">胡晓</td>
+																<td class="content">
+																	<a href="javascript:void(0)" onclick="showSaleClueDetailBySaleClue('51204edb-210c-48fd-808e-d15f8b37a205')">(胡晓)李晓龙
+																		
+																	</a>
+																</td>
+																<td class="content">13526593900</td>
+																<td class="content"></td>
+																<td class="content"></td>
+																<td class="content">已处理</td>
+																<td class="content">2017-10-24 14:00:01.01</td>
+																<td class="content">2017-10-24 14:00:21.004</td>
+																<td class="content"></td>
+																<td class="content"></td>
+																<td class="content"></td>
+																<td class="content">
+																	
+																</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 14:00:01.01</td>
+																<td class="content textHidden">1</td>
+																
+																<td class="content textHidden" title="(汽车之家销售顾问:胡晓13526881777)询价.河南郑州众泰T700 2017款 1.8T 自动尊贵型">(汽车之家销售顾问:胡晓13526881777)询价.河南郑州众泰T700 2017款 1.8T 自动尊贵型</td>
+																<td class="content textHidden" title=""></td>								
+															</tr>
+														
+															<tr align="center" onmousemove="trOnmousemove(this)" onmouseout="trOnmouseout(this)">
+																<td class="content">
+																	
+																	&nbsp;
+																	5</td>
+																<td class="content">易车网</td>
+																<td class="content">马苏</td>
+																<td class="content">
+																	<a href="javascript:void(0)" onclick="showSaleClueDetailBySaleClue('8d008133-3664-4288-be05-a896e1bfbff5')">张正今
+																		
+																	</a>
+																</td>
+																<td class="content">13503997788</td>
+																<td class="content"></td>
+																<td class="content"></td>
+																<td class="content">战败</td>
+																<td class="content">2017-10-24 14:24:59.579</td>
+																<td class="content">2017-10-24 15:12:33.771</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 15:12:33.771</td>
+																<td class="content"></td>
+																<td class="content">
+																	
+																</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 14:24:59.579</td>
+																<td class="content textHidden">1</td>
+																
+																<td class="content textHidden" title="河南郑州众泰汽车 T700 1.8T 手动豪华型">河南郑州众泰汽车 T700 1.8T 手动豪华型</td>
+																<td class="content textHidden" title="【线索战败原因】:网销经理操作,战败!,网销经理操作,战败!!">【线索战败原因】:网销经理操作,战败!,网销经理操作,战败!!</td>								
+															</tr>
+														
+															<tr align="center" onmousemove="trOnmousemove(this)" onmouseout="trOnmouseout(this)">
+																<td class="content">
+																	
+																	&nbsp;
+																	6</td>
+																<td class="content">汽车之家</td>
+																<td class="content">侯文娟</td>
+																<td class="content">
+																	<a href="javascript:void(0)" onclick="showSaleClueDetailBySaleClue('203888a4-453e-4d7b-9d9f-18d477b03de2')">(彭乔)汽车之家400
+																		
+																	</a>
+																</td>
+																<td class="content">15188382339</td>
+																<td class="content"></td>
+																<td class="content"></td>
+																<td class="content">战败</td>
+																<td class="content">2017-10-24 13:40:05.377</td>
+																<td class="content">2017-10-24 13:47:10.789</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 13:47:10.789</td>
+																<td class="content"></td>
+																<td class="content">
+																	
+																</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 13:40:05.377</td>
+																<td class="content textHidden">1</td>
+																
+																<td class="content textHidden" title="(汽车之家销售顾问:彭乔17630005668)400.河南 郑州">(汽车之家销售顾问:彭乔17630005668)400.河南 郑州</td>
+																<td class="content textHidden" title="【线索战败原因】:网销经理操作,无效!,网销经理操作,无效!!">【线索战败原因】:网销经理操作,无效!,网销经理操作,无效!!</td>								
+															</tr>
+														
+															<tr align="center" onmousemove="trOnmousemove(this)" onmouseout="trOnmouseout(this)">
+																<td class="content">
+																	
+																	&nbsp;
+																	7</td>
+																<td class="content">易车网</td>
+																<td class="content">胡晓</td>
+																<td class="content">
+																	<a href="javascript:void(0)" onclick="showSaleClueDetailBySaleClue('34673977-de9b-4bef-96b8-21f006887113')">黄春航
+																		
+																	</a>
+																</td>
+																<td class="content">13526752772</td>
+																<td class="content"></td>
+																<td class="content"></td>
+																<td class="content">战败</td>
+																<td class="content">2017-10-24 11:34:48.03</td>
+																<td class="content">2017-10-24 12:04:45.174</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 12:04:45.174</td>
+																<td class="content"></td>
+																<td class="content">
+																	
+																</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 11:34:48.03</td>
+																<td class="content textHidden">1</td>
+																
+																<td class="content textHidden" title="河南郑州众泰汽车 T700 1.8T 手动豪华型">河南郑州众泰汽车 T700 1.8T 手动豪华型</td>
+																<td class="content textHidden" title="【线索战败原因】:网销经理操作,战败!,网销经理操作,战败!!">【线索战败原因】:网销经理操作,战败!,网销经理操作,战败!!</td>								
+															</tr>
+														
+															<tr align="center" onmousemove="trOnmousemove(this)" onmouseout="trOnmouseout(this)">
+																<td class="content">
+																	
+																	&nbsp;
+																	8</td>
+																<td class="content">汽车之家</td>
+																<td class="content">侯文娟</td>
+																<td class="content">
+																	<a href="javascript:void(0)" onclick="showSaleClueDetailBySaleClue('2ba45161-83f3-45e2-9a20-64d3062d115b')">(侯文娟)汽车之家400
+																		
+																	</a>
+																</td>
+																<td class="content">15517595757</td>
+																<td class="content"></td>
+																<td class="content"></td>
+																<td class="content">战败</td>
+																<td class="content">2017-10-24 15:10:04.094</td>
+																<td class="content">2017-10-24 15:12:33.786</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 15:12:33.786</td>
+																<td class="content"></td>
+																<td class="content">
+																	
+																</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 15:10:04.094</td>
+																<td class="content textHidden">1</td>
+																
+																<td class="content textHidden" title="(汽车之家销售顾问:侯文娟13183017983)400.河南 郑州">(汽车之家销售顾问:侯文娟13183017983)400.河南 郑州</td>
+																<td class="content textHidden" title="【线索战败原因】:网销经理操作,战败!,网销经理操作,战败!!">【线索战败原因】:网销经理操作,战败!,网销经理操作,战败!!</td>								
+															</tr>
+														
+															<tr align="center" onmousemove="trOnmousemove(this)" onmouseout="trOnmouseout(this)">
+																<td class="content">
+																	
+																	&nbsp;
+																	9</td>
+																<td class="content">汽车之家</td>
+																<td class="content">彭乔</td>
+																<td class="content">
+																	<a href="javascript:void(0)" onclick="showSaleClueDetailBySaleClue('ccdb2f59-4146-4dd0-b4b1-d69b5554367d')">(彭乔)汽车之家400
+																		
+																	</a>
+																</td>
+																<td class="content">15136688606</td>
+																<td class="content"></td>
+																<td class="content"></td>
+																<td class="content">战败</td>
+																<td class="content">2017-10-24 14:40:03.851</td>
+																<td class="content">2017-10-24 15:12:33.818</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 15:12:33.818</td>
+																<td class="content"></td>
+																<td class="content">
+																	
+																</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 14:40:03.851</td>
+																<td class="content textHidden">1</td>
+																
+																<td class="content textHidden" title="(汽车之家销售顾问:彭乔17630005668)400.河南南阳">(汽车之家销售顾问:彭乔17630005668)400.河南南阳</td>
+																<td class="content textHidden" title="【线索战败原因】:网销经理操作,战败!,网销经理操作,战败!!">【线索战败原因】:网销经理操作,战败!,网销经理操作,战败!!</td>								
+															</tr>
+														
+															<tr align="center" onmousemove="trOnmousemove(this)" onmouseout="trOnmouseout(this)">
+																<td class="content">
+																	
+																	&nbsp;
+																	10</td>
+																<td class="content">汽车之家</td>
+																<td class="content">侯文娟</td>
+																<td class="content">
+																	<a href="javascript:void(0)" onclick="showSaleClueDetailBySaleClue('70af1681-cf92-47ca-9136-418194c8c91d')">(侯文娟)贾勇
+																		
+																	</a>
+																</td>
+																<td class="content">13837133402</td>
+																<td class="content"></td>
+																<td class="content"></td>
+																<td class="content">已处理</td>
+																<td class="content">2017-10-24 10:30:02.771</td>
+																<td class="content">2017-10-24 10:33:53.583</td>
+																<td class="content"></td>
+																<td class="content"></td>
+																<td class="content"></td>
+																<td class="content">
+																	
+																</td>
+																<td class="content"></td>
+																<td class="content">2017-10-24 10:30:02.771</td>
+																<td class="content textHidden">1</td>
+																
+																<td class="content textHidden" title="(汽车之家销售顾问:侯文娟13183017983)询价.河南郑州众泰Z700 2018款 Z700H 1.8T DCT旗舰型">(汽车之家销售顾问:侯文娟13183017983)询价.河南郑州众泰Z700 2018款 Z700H 1.8T DCT旗舰型</td>
+																<td class="content textHidden" title=""></td>								
+															</tr>
+														
+													</table>
+													<br>
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td colspan="2" width="100%" align="right">
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共<b>707</b>条记录&nbsp;<a href="javascript:pageTo('/saleClue_queryPagedList.action',1)">首页</a>&nbsp;<a href="javascript:pageTo('/saleClue_queryPagedList.action',0)" disabled='true' onclick='return false'>上一页</a>&nbsp;<a href="javascript:pageTo('/saleClue_queryPagedList.action',2)">下一页</a>&nbsp;<a href="javascript:pageTo('/saleClue_queryPagedList.action',71)">尾页</a><input size="4" type="text" name="pageGo" id="pageGo" onkeyup="validNum(this)" />&nbsp;&nbsp;&nbsp;<input type="button" value="跳转" onclick="goPage('/saleClue_queryPagedList.action',document.getElementById('pageGo').value)" />&nbsp;&nbsp;总共：<span id="pageCount">71</span> 页&nbsp;当前:第1页<input type="hidden" name="currentPage" id="currentPage" value=""/>
+															</td>
+														</tr>
+													</table>
+												
+											</td>
+										</tr>
+										
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

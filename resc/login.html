@@ -1,0 +1,215 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<head>
+    <title>众泰客户关系管理系统</title>
+
+
+    <script language="javascript">
+        function check() {
+            var loginName = document.getElementById("userName").value;
+            var password = document.getElementById("password").value;
+            if (loginName == "") {
+                //alert("请输入用户名!");
+                Ext.Msg.alert("提示", "请输入用户名!");
+                document.getElementById("userName").focus();
+                return false;
+            }
+            if (password == "") {
+                //alert("请输入密码!");
+                Ext.Msg.alert("提示", "请输入密码!");
+                document.getElementById("password").focus();
+                return false;
+            }
+
+
+
+            Ext.Ajax.request({
+                url: "/user_login.do?time=" + new Date().getTime(),
+                success: function (response, option) {
+                    var str = response.responseText;
+                    if (str == "ok") {
+                        document.location = "/role_getMainMenu.do";
+                    } else {
+                        Ext.Msg.alert("提示", str);
+                    }
+                },
+                params: {
+                    loginName: loginName
+                    , password: password
+                }
+            });
+        }
+
+        function enterIn(evt) {
+            var evt = evt ? evt : (window.event ? window.event : null);//兼容IE和FF
+            if (evt.keyCode == 13) {
+                check();
+            } else {
+                return false;
+            }
+        }
+        function reset() {
+            document.getElementById("userName").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("userName").focus();
+        }
+        function app() {
+            //,'商谈记录明细','width=900,height=525,location=no,resizable=no,status=no,toolbar=no,scrollbars=yes,menubar=no,screenX=100,screenY=100'
+            window.open('/appUrl_list.html', '_blank');
+        }
+    </script>
+    <style type="text/css">
+        .logo,
+        footer {
+            width: 100%;
+        }
+
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .logo {
+
+            background: #EFF4FA;
+            border-bottom: 1px solid #D6DFEA;
+            width: 100%;
+            height: 60px;
+        }
+
+        .footer {
+            background: #EFF4FA;
+            border-top: 1px solid #D6DFEA;
+            font-size: 12px;
+            position: fixed;
+            left: 0;
+            right: 0;
+            /* 	width:100% */
+            bottom: 10;
+            height: 40px;
+            line-height: 40px;
+            /*margin-bottom: 0px;
+			  bottom: 0px; */
+            color: #868686;
+
+
+
+
+        }
+
+        .logo img {
+            margin-top: 10px;
+            margin-left: 40px;
+        }
+
+        form {
+            background: white;
+            margin-top: 90px;
+            position: relative;
+            left: 66%;
+            /*margin-left: 700px;*/
+            border: 1px solid #a0b1c4;
+            border-radius: 10px;
+            width: 334px;
+            height: 300px;
+            z-index: 2;
+
+        }
+
+        .user,
+        .password {
+            border: 1px solid #a0b1c4;
+            border-radius: 5px;
+
+            width: 232px;
+            height: 40px;
+            padding-left: 10px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            padding-right: 40px;
+            font-size: 15px;
+            font-family: "微软雅黑";
+
+        }
+
+        .user {
+            margin-top: 30px;
+        }
+
+        .password {
+            margin-top: 15px;
+        }
+
+        .submit {
+            margin-top: 30px;
+            width: 287px;
+            height: 40px;
+            padding: 6px;
+            background: #5a98de;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            font-family: "微软雅黑";
+
+        }
+
+        .header {
+            height: 40px;
+            line-height: 40px;
+            border-bottom: solid 1px #a0b1c4;
+        }
+
+        .car {
+            position: absolute;
+            top: 130px;
+            left: 15%;
+
+        }
+
+        a:link,
+        a:visited {
+            text-decoration: none;
+            /*超链接无下划线*/
+        }
+
+        a:hover {
+            text-decoration: underline;
+            /*鼠标放上去有下划线*/
+        }
+    </style>
+</head>
+
+<body onload="document.getElementById('userName').focus();">
+
+
+    <div class="logo">
+        <img src="/images/logo.png" />
+    </div>
+    <form action="" method="post">
+        <div class="header">
+            <center>
+                登陆
+            </center>
+        </div>
+        <center>
+            <input class="user" type="text" name="userName" id="userName" placeholder="输入用户名" />
+            <br />
+            <input class="password" type="password" name="password" id="password" placeholder="输入密码" />
+            <br />
+            <input class="submit" type="button" value="登录" onClick="return check()" />
+        </center>
+
+
+    </form>
+    <img class="car" src="/images/75.png" />
+    <div class="footer">
+        <center>
+
+            技术支持 :众泰控股集团信息中心 |QQ群：474180767 | 本站请使用Chrome或360浏览器(极速模式)|
+            <a href="./appUrl_list.html" style="color: red;">APP下载地址</a>
+        </center>
+    </div>
+</body>
+
+</html>
