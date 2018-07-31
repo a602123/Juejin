@@ -12,12 +12,13 @@ C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsAppl
 C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\众泰掘金自动化处理.application
 C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\众泰掘金自动化处理.exe
 C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\众泰掘金自动化处理.pdb
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojAssemblyReference.cache
 C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Music.resources
 C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
-C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.cache
 C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.CoreCompileInputs.cache
 C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\众泰掘金自动化处理.exe.manifest
 C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\众泰掘金自动化处理.application
 C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\众泰掘金自动化处理.exe
 C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\众泰掘金自动化处理.pdb
-C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Music.resources

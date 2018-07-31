@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="众泰掘金自动化处理.exe" version="1.0.0.8" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="众泰掘金自动化处理.exe" version="1.0.0.40" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="logo.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="众泰掘金自动化处理.exe" size="226816">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="众泰掘金自动化处理.exe" size="916992">
       <assemblyIdentity name="众泰掘金自动化处理" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4oTEJ/5Uz/r57Xg6AT3e1X4FmX5NTkF0U2OTLmrq9/E=</dsig:DigestValue>
+        <dsig:DigestValue>rlhbPBufhevOeEv4jXCiEuYOXWfSWiO3mYvhJzt3gJc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -63,22 +63,13 @@
       <dsig:DigestValue>4+wgjJwhLsQTh3PSAFPIVrdQVhQUtftwN/8E+gt3XPU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="prompt.wav" size="200044">
+  <file name="众泰掘金自动化处理.exe.config" size="1249">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>D4TI6enLHavMXi0+k18zyioweKVi4dD6wGZk73TX1ac=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="众泰掘金自动化处理.exe.config" size="1203">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>8mV9mNIL6uKvy/tjjkNk6FwFZ4YSfZzhz38/aOxNE7E=</dsig:DigestValue>
+      <dsig:DigestValue>G3YzOWXdIeAVqvvslRpyCqmVJuui2c4HToXNbZKRPB4=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

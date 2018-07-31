@@ -14,6 +14,7 @@ using System.Timers;
 using System.IO;
 using mshtml;
 using System.Media;
+using System.Threading;
 
 namespace WindowsFormsApplication1
 {
@@ -25,6 +26,7 @@ namespace WindowsFormsApplication1
         static double interval = Convert.ToDouble(ConfigurationManager.AppSettings["interval"]);
         const string logintitle = "众泰客户关系管理系统";
         const string worktitle = "销售线索信息维护";
+        bool falg=false;
         List<string> logList;
         public Dictionary<string,string> user
         {
@@ -36,23 +38,35 @@ namespace WindowsFormsApplication1
         }
         public Form1()
         {
-            InitializeComponent();           
-        }        
+            InitializeComponent();
+        }       
 
         private void Form1_Load(object sender, EventArgs e)
         {
             label1.Text = "";
+            //var acceptLanguageHeader = "Accept-Language:en-US,q=0.5\nUser-Agent:MyCoustomBrowser";
             this.webBrowser1.Navigate(loginurl);
+            
+            //System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
+            //timer1.Interval = 20000;
+            //timer1.Enabled = true;
+            //MessageBox.Show("试用期为1小时，欢迎体验!");
+            //timer1.Tick += new EventHandler(timer1EventProcessor);//添加事件
+
         }
+        //public void timer1EventProcessor(object source, EventArgs e)
+        //{
+        //    MessageBox.Show("试用时间已到！");            
+        //    Stop();
+        //    Application.Exit();
+        //}
 
         void login()
         {
             
                 this.webBrowser1.Document.GetElementById("userName").InnerText = user["loginName"];
                 this.webBrowser1.Document.GetElementById("password").InnerText = user["password"];
-                this.webBrowser1.Document.GetElementsByTagName("input").GetElementsByName("")[0].InvokeMember("click");
-           
-                       
+                this.webBrowser1.Document.GetElementsByTagName("input").GetElementsByName("")[0].InvokeMember("click");              
         }
 
         private void loginbtn_Click(object sender, EventArgs e)
@@ -98,8 +112,7 @@ namespace WindowsFormsApplication1
                 {
                     login();
                     MessageBox.Show("登录成功！");
-                    this.webBrowser1.Navigate(workurl);
-
+                    this.webBrowser1.Navigate(workurl);                    
                 }
                 else if (title == worktitle)
                 {
@@ -113,25 +126,33 @@ namespace WindowsFormsApplication1
             }
 
         }
-        
+
 
         private void doworkbtn_Click(object sender, EventArgs e)
         {
-            
-            Task.Factory.StartNew(()=> {
-                this.BeginInvoke(new workmethod(() =>
+            if (LicenceBusiness.GetInstance().LicenceState)
+            {
+                Task.Factory.StartNew(() =>
                 {
+                    this.BeginInvoke(new workmethod(() =>
+                    {
 
 
-                    label1.Text = "定期执行已开始...";
-                    label1.ForeColor = Color.GreenYellow; ;
-                    log();
-                    dowork();
-                }));
-                doworkInit();
-                Start();
-                
-            });
+                        label1.Text = "定期执行已开始...";
+                        label1.ForeColor = Color.GreenYellow; ;
+                        log();
+                        dowork();
+                    }));
+                    doworkInit();
+                    Start();
+
+                });
+            }
+            else
+            {
+                MessageBox.Show("请联系技术人员，升级权限操作！（q群:572670808,联系群主及管理。）");
+            }
+
         }
 
         #region 轮询
@@ -166,8 +187,11 @@ namespace WindowsFormsApplication1
             this.BeginInvoke(new workmethod(() =>
             {
                 //this.webBrowser1.Refresh();
+
                 log();
-                dowork();                
+                dowork();
+
+
             }));           
             
 
@@ -192,14 +216,21 @@ namespace WindowsFormsApplication1
                 cx.InvokeMember("click");
 
                 if (IsHasResult())
-                {                    
+                {
+                    #region 全选_LastVersion
                     var idall = document.GetElementById("idall");
                     //i.SetAttribute("checked","checked");
-                    idall.InvokeMember("click");
-
+                    //idall.InvokeMember("click");
+                    #endregion
+                    foreach (HtmlElement item in document.GetElementsByTagName("input"))
+                    {
+                        if (item.Id == "urls")
+                        {
+                            item.SetAttribute("checked", "checked");
+                        }
+                    }
                     var a = document.GetElementById("defeatReasonSelect");
                     a.SetAttribute("value", "战败");
-
                     var c = document.GetElementsByTagName("input").GetEnumerator();
                     while (c.MoveNext())
                     {
@@ -208,13 +239,31 @@ namespace WindowsFormsApplication1
                             ((HtmlElement)c.Current).InvokeMember("click");
                             break;
                         }
-                    } 
+                    }
+
                 }
 
-
-                //vDocument.parentWindow.execScript("function alert(str){return true;} ", "javaScript");//弹出提示
+                vDocument.parentWindow.execScript("function alert(str){return true;} ", "javaScript");//弹出提示
             }
-            
+            else if (document.Title == logintitle)
+            {
+                this.BeginInvoke(new workmethod(() => { MessageBox.Show("请重新登录", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning); }));
+
+            }
+            else  if (webBrowser1.DocumentText.Contains("无法") || webBrowser1.DocumentText.Contains("404") || webBrowser1.DocumentText.ToLower().Contains("not found")|| webBrowser1.DocumentText.ToLower().Contains("此程序"))
+                //webBrowser1.DocumentTitle == "无法找到资源。"|| webBrowser1.DocumentTitle == "无法找到该页"||webBrowser1.DocumentTitle== "HTTP 404 未找到")
+            {
+                
+                this.BeginInvoke(new workmethod(() =>
+                {
+                    label1.Text = "";
+                    System.Media.SystemSounds.Hand.Play();
+                    MessageBox.Show("请稍后重新启动该程序，有可能是掘金服务器出现问题！", "未知错误", MessageBoxButtons.OK,MessageBoxIcon.Error);                                      
+                }));
+                
+            }
+
+
 
         }
         delegate void workmethod();
@@ -223,13 +272,14 @@ namespace WindowsFormsApplication1
             var doc = this.webBrowser1.Document;            
             logList = new List<string>();
             var b=doc.GetElementsByTagName("input");
-
+            var weblogCount = 0;
             if (IsHasResult())
             {
                 foreach (HtmlElement item in b)
                 {
                     if (item.Id == "urls")
                     {
+                        weblogCount++;
                         HtmlElement parentElement = item.Parent.Parent;
                         StringBuilder log = new StringBuilder();
                         log.Append($"处理时间:{DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")},")
@@ -249,11 +299,13 @@ namespace WindowsFormsApplication1
                 string logresult = string.Empty;
                 logList.ForEach((i) =>
                 {
-                    logresult += $"{i} \r\n";
+                    logresult += $"{i} \r\n ";
                 });
+                logresult += $"本次处理{logList.Count}条线索{weblogCount}\r\n";
                 writelog(logresult,"log.txt");
                 PlaySound();
             }
+
             else
             {
                 writelog($"---{DateTime.Now} ,没有未处理线索","logSerach.txt");
@@ -275,7 +327,7 @@ namespace WindowsFormsApplication1
             return falg;
         }
         #region 操作Txt
-        void writelog(string log,string filename)
+        public void writelog(string log,string filename)
         {
             if (!File.Exists(System.AppDomain.CurrentDomain.BaseDirectory + $"\\{filename}"))
             {
@@ -303,9 +355,16 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Stop();
-            label1.Text = "定期执行已停止...";
-            label1.ForeColor = Color.Red;
+            if (LicenceBusiness.GetInstance().LicenceState)
+            {
+                Stop();
+                label1.Text = "定期执行已停止...";
+                label1.ForeColor = Color.Red;
+            }
+            else
+            {
+                MessageBox.Show("请联系技术人员，升级权限操作！");
+            }
         }
 
         private void exitbtn_Click(object sender, EventArgs e)
@@ -319,13 +378,16 @@ namespace WindowsFormsApplication1
             //MessageBox.Show(System.AppDomain.CurrentDomain.BaseDirectory);
         }
         
-        private void PlaySound()
+        private static void PlaySound()
         {
             //以流的方式,从资源文件读取背景音乐文件
             Stream stream = global::WindowsFormsApplication1.Music.prompt;//global::Music.Properties.Resources.music;
 
             //初始化一个音乐播放器类
             SoundPlayer player = new SoundPlayer(stream);
+            //SoundPlayer player = new SoundPlayer();
+
+            //player.SoundLocation = "prompt.wav";
 
             //异步载入文件
             player.LoadAsync();
@@ -334,5 +396,20 @@ namespace WindowsFormsApplication1
             player.Play();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+              PlaySound();                  
+            //ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            writelog(System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces().FirstOrDefault().GetPhysicalAddress().ToString(), "LicenceMac");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.webBrowser1.Navigate(loginurl);
+        }
     }     
 }
