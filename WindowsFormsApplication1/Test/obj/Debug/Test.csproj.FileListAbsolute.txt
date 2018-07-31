@@ -1,0 +1,11 @@
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\obj\Debug\Test.Form1.resources
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\obj\Debug\Test.Properties.Resources.resources
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\obj\Debug\Test.csproj.GenerateResource.Cache
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\bin\Debug\Test.exe.config
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\bin\Debug\Test.exe
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\bin\Debug\Test.pdb
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\bin\Debug\众泰掘金自动化处理.exe
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\bin\Debug\众泰掘金自动化处理.pdb
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\obj\Debug\Test.exe
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\obj\Debug\Test.pdb

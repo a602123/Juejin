@@ -1,0 +1,11 @@
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\bin\Release\Test.exe.config
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\bin\Release\Test.exe
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\bin\Release\Test.pdb
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\bin\Release\众泰掘金自动化处理.exe
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\bin\Release\众泰掘金自动化处理.pdb
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\obj\Release\Test.csprojResolveAssemblyReference.cache
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\obj\Release\Test.Form1.resources
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\obj\Release\Test.Properties.Resources.resources
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\obj\Release\Test.csproj.GenerateResource.Cache
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\obj\Release\Test.exe
+C:\Users\XFY\Desktop\掘金\new\juejin\WindowsFormsApplication1\Test\obj\Release\Test.pdb
